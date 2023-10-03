@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\MailController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,3 +40,5 @@ Route::prefix('/task')->group(function () {
     Route::put('/update', [TaskController::class, 'update'])->name('task.update');
     Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
 });
+
+Route::get('/mail/send', [MailController::class, 'toTsuchiya']);
