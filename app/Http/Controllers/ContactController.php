@@ -75,8 +75,14 @@ class ContactController extends Controller
     public function edit($id)
     {
         //
-        $dt = Contact::find($id);
-        return view("contact.edit", compact(['dt']));
+        if ($id != '0') {
+            $dt = Contact::find($id);
+            return view("contact.edit", compact(['dt']));
+        } else {
+            $dt = Contact::find($id);
+            return view("contact.index");
+        }
+
     }
 
     /**

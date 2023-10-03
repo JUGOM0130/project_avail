@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Exchange extends Model
+class Task extends Model
 {
     use HasFactory;
 
-    protected $table = 'exchanges';
+    protected $table = 'tasks';
 
     //ホワイトリストの設定
-    protected $fillable = ["parent_id", "row_no", "exchange"]; //保存したいカラム名
+    protected $fillable = ["contact_id", "title", "detail"]; //保存したいカラム名
+
 }

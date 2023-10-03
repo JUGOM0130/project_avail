@@ -17,6 +17,8 @@
         <li>
             <a href="{{ url('/contact') }}">@php echo url('/contact') @endphp</a>
         </li>
-        <li></li>
+        <li>
+            <a href="{{ url('/task') }}">@php echo url('/task') @endphp</a>
+        </li>
     </ul>
 @endsection

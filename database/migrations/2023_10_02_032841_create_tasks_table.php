@@ -14,18 +14,35 @@ return new class extends Migration
         //  参照
         //  https://tech.amefure.com/php-laravel-migration-column
 
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger("contact_id");
-            $table->String("title");
-            $table->String("detail");
-            $table->timestamps();
+        if (!Schema::hasTable('tasks')) {
+            Schema::create('tasks', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger("contact_id");
+                $table->String("title");
+                $table->String("detail");
+                $table->timestamps();
+    
+                $table->foreign('contact_id') // 外部キーとして登録したいカラム
+                        ->references("id")       // 参照元テーブルカラム
+                        ->on('contacts')        // 参照元テーブル
+                        ->onDelete('cascade');  // 参照先が削除されたら同時に削除
+            });
+        }else{
+            Schema::dropIfExists('tasks');
+            Schema::create('tasks', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger("contact_id");
+                $table->String("title");
+                $table->String("detail");
+                $table->timestamps();
+    
+                $table->foreign('contact_id') // 外部キーとして登録したいカラム
+                        ->references("id")       // 参照元テーブルカラム
+                        ->on('contacts')        // 参照元テーブル
+                        ->onDelete('cascade');  // 参照先が削除されたら同時に削除
+            });
+        }
 
-            $table->foreign('contact_id') // 外部キーとして登録したいカラム
-                    ->reference("id")       // 参照元テーブルカラム
-                    ->on('contacts')        // 参照元テーブル
-                    ->onDelete('cascade');  // 参照先が削除されたら同時に削除
-        });
     }
 
     /**

@@ -11,7 +11,12 @@
 
 <body>
     <div class="container">
-        <div>
+        <div class="my-3">
+            <button type="button" class="btn btn-outline-secondary" onclick="location.href='{{ route('task.index') }}'">
+                タスク一覧（TaskIndex）
+            </button>
+        </div>
+        <div class="mb-3">
 
             <button class="btn btn-outline-secondary" onclick="location.href='{{ route('contact.index') }}'">
                 一覧（Index）
@@ -19,6 +24,7 @@
             <button class="btn btn-outline-secondary" onclick="location.href='{{ route('contact.create') }}'">
                 作成（Create）
             </button>
+
         </div>
 
         <table class="table">

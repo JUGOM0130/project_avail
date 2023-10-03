@@ -53,20 +53,28 @@
             <div class="row">
                 <div class="col">
                     <label for="start" class="form-label">開始日</label>
-                    <input type="date" name="start" id="start" class="form-control" value="{{$dt->start}}">
+                    <input type="date" name="start" id="start" class="form-control"
+                        value="{{ $dt->start }}">
                 </div>
                 <div class="col">
                     <label for="end" class="form-label">終了日</label>
-                    <input type="date" name="end" id="end" class="form-control" value="{{$dt->end}}">
+                    <input type="date" name="end" id="end" class="form-control"
+                        value="{{ $dt->end }}">
                 </div>
             </div>
         </div>
-        {{-- Form --}}
-        {{ Form::submit('送信', ['class' => 'btn btn-primary']) }}
-        {{ Form::close() }}
 
+        {{ Form::submit('送信', ['class' => 'btn btn-primary']) }}
+        {{ Form::button('タスク作成', ['class' => 'btn btn-primary', 'onclick' => 'toTask()']) }}
+        {{ Form::close() }}
         @vite(['resources/js/contact/edit.js', 'resources/sass/app.scss'])
     </div>
+    <script>
+        function toTask() {
+            let url = "{{ route('task.create', ['contact_id' => $dt->id]) }}";
+            location.href = url;
+        }
+    </script>
 </body>
 
 </html>
