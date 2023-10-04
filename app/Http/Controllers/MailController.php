@@ -20,20 +20,24 @@ class MailController extends Controller
         return view('contact.index');
     }
 
-    public function toTsuchiya(Request $request)
+    public function contactNotification(Request $request)
     {
-        $name = 'テスト ユーザー';
-        $email = 'junnehoomaki@yahoo.co.jp';
-        $data = ["name"=>"jugom"];
-        $message = "hogehoge";
+        /**
+         * arg1・・・テンプレートのパスを指定
+         * arg2・・・テンプレートファイルで使うデータを指定
+         * arg3・・・コールバックメソッド
+         */
+        $subject = $request->subject;
+        $id = $request->id;
 
-
-        Mail::send('mail.template', $data, function($message){
-    	    $message->to('junnehoomaki@yahoo.co.jp', "title")
-            ->subject('This is a test mail');
+        Mail::send('mail.template',
+                    ["id"=>$id,'time'->date('Y-m-d H:i:s')],
+                    function($message)use($subject){
+                	    $message->to('notification@gonzaburo.sakura.ne.jp')
+                                ->bcc('tsuchi-jun@asuzacgroup.jp')
+                                ->cc('tsuchi-jun@gonzaburo.sakura.ne.jp'/* ,'horiuchi@avail.jp'*/)
+                                ->subject($subject);
     	});
-
-        return view('contact.index');
     }
     
 

@@ -7,6 +7,8 @@ use App\Models\Exchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Mail;
+
 class ContactController extends Controller
 {
     /**
@@ -57,6 +59,16 @@ class ContactController extends Controller
             }
         }, 2); //←最大施行回数2回
 
+        
+        $msg = "やり取りで新規登録がありました。";
+        Mail::send('mail.template',
+                    ["id"=>$id,"msg"=>$msg],
+                    function($message){
+                	    $message->to('notification@gonzaburo.sakura.ne.jp')
+                                ->bcc('tsuchi-jun@asuzacgroup.jp')
+                                ->cc('tsuchi-jun@gonzaburo.sakura.ne.jp','horiuchi@avail.jp')
+                                ->subject($msg);
+    	});
         return redirect()->route("contact.index");
 
     }
@@ -110,21 +122,17 @@ class ContactController extends Controller
                     "exchange" => $value,
                 ]);
             }
-            /*できない・・・
-        $ex = $con->exchanges;
-        $arr = [];
-        $i = 0;
-        foreach ($ex as $item) {
-        $arr[] = [
-        "id" => $item->id,
-        "parent_id" => $item->parent_id,
-        "row_no" => $i++,
-        "exchange" => $item->exchange,
-        ];
-        }
-        Exchange::upsert($arr, ['id'], ['exchange']);
-         */
         }, 2); //←最大施行回数2回
+
+        $msg = "やり取りで更新がありました。";
+        Mail::send('mail.template',
+                    ["id"=>$request->id,"msg"=>$msg],
+                    function($message){
+                	    $message->to('notification@gonzaburo.sakura.ne.jp')
+                                ->bcc('tsuchi-jun@asuzacgroup.jp')
+                                ->cc('tsuchi-jun@gonzaburo.sakura.ne.jp','horiuchi@avail.jp')
+                                ->subject($msg);
+    	});
 
         return redirect()->route("contact.index");
     }

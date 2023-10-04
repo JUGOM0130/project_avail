@@ -41,4 +41,7 @@ Route::prefix('/task')->group(function () {
     Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('task.edit');
 });
 
-Route::get('/mail/send', [MailController::class, 'toTsuchiya']);
+Route::prefix('/mail')->group(function () {
+    Route::post('/send', [MailController::class, 'contactNotification'])->name('contactNotification');
+});
+

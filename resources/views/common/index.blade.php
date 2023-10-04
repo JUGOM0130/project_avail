@@ -20,5 +20,8 @@
         <li>
             <a href="{{ url('/task') }}">@php echo url('/task') @endphp</a>
         </li>
+        <li>
+            <a href="{{ url('/mail/send') }}">@php echo url('/mail/send') @endphp</a>
+        </li>
     </ul>
 @endsection
