@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class IdeaNotes extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'category_id',
+        'title',
+        'body'
+    ];
 }

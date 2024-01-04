@@ -3,6 +3,8 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\IdeaNotesController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +47,15 @@ Route::prefix('/mail')->group(function () {
     Route::post('/send', [MailController::class, 'contactNotification'])->name('contactNotification');
 });
 
+/*
+Route::prefix('/ideanotes')->group(function () {
+    Route::get('/', [IdeaNotesController::class, 'index'])->name("ideanotes.index");
+    Route::get('/create/{id}', [IdeaNotesController::class, 'create'])->name("ideanotes.create");
+    Route::post('/store', [IdeaNotesController::class, 'store'])->name("ideanotes.store");
+    Route::get('/show/{id}', [IdeaNotesController::class, 'show'])->name('ideanotes.show');
+    Route::delete('/destroy/{id}', [IdeaNotesController::class, 'destroy'])->name('ideanotes.destroy');
+    Route::put('/update', [IdeaNotesController::class, 'update'])->name('ideanotes.update');
+    Route::get('/edit/{id}', [IdeaNotesController::class, 'edit'])->name('ideanotes.edit');
+});
+*/
+Route::resource('ideanotes', IdeaNotesController::class);
