@@ -45,6 +45,7 @@
             <li>
                 <a href="{{url('http://133.18.242.137/avail_pdm')}}">pdm</a>
             </li>
+
         </ul>
         <hr>
         <h6>設定</h6>
@@ -63,7 +64,7 @@
             <li>
                 <a href="{{url('/contact')}}">@php echo url('/contact') @endphp</a>
             </li>
-            <li></li>
+            
         </ul>
 
     </div>

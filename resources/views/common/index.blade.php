@@ -24,4 +24,10 @@
             <a href="{{ url('/mail/send') }}">@php echo url('/mail/send') @endphp</a>
         </li>
     </ul>
+
+    <ul>
+        <li>
+            <a href="{{url('http://133.18.242.137/laravel')}}">testproject</a>
+        </li>
+    </ul>
 @endsection
