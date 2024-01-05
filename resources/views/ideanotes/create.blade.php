@@ -20,7 +20,8 @@
             height: 100%;
         }
     </style>
-    <iframe src="http://133.18.242.137/laravel/dmy" frameborder=0></iframe>
+
+
     <div class="container">
 
         {{ Form::open(['route' => 'ideanotes.store']) }}
@@ -38,7 +39,7 @@
         <div class="row mb-3">
             {{ Form::label('title', 'タイトル', ['class' => 'col-sm-2 col-form-label', 'for' => 'title']) }}
             <div class="col-sm-10">
-                {{ Form::text('title', null, ['class' => 'form-control','id'=>'title']) }}
+                {{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title']) }}
             </div>
         </div>
 
@@ -46,15 +47,15 @@
         <div class="row mb-3">
             {{ Form::label('body', '内容', ['class' => 'col-sm-2 col-form-label', 'for' => 'body']) }}
             <div class="col-sm-10">
-                {{ Form::textarea('body', null, ['class' => 'form-control','id'=>'body']) }}
+                {{ Form::textarea('body', null, ['class' => 'form-control', 'id' => 'body']) }}
             </div>
         </div>
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button type="submit" class="btn btn-outline-primary">登録</button>
         </div>
-        
-        
+
+
         {{ Form::close() }}
     </div>
     @php
