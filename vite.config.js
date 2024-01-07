@@ -28,11 +28,11 @@ export default defineConfig({
                 transformAssetUrls: {
                     base: null,
                     includeAbsolute: false,
-                }
-            }
+                },
+            },
         }),
     ],
-    /**20230713_追記 */
+/**20230713_追記 */
     //ホットリロードが効かないときに使用すると良い
     server: {
         host: '133.18.242.137',
@@ -48,9 +48,9 @@ export default defineConfig({
     },
     /**20230907追記 */
     resolve: {
-        alias: [{
-            find: "@@",
-            replacement: path.join(__dirname, 'resources/'),
-        }],
+        alias: {
+            'vue': 'vue/dist/vue.esm-bundler.js',
+            '@@' : path.join(__dirname, 'resources/')
+        },
     },
 });
